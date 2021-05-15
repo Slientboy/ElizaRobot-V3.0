@@ -1,7 +1,7 @@
 import random, html
 
-from tgbot import dispatcher
-from tgbot.modules.disable import (DisableAbleCommandHandler,
+from tg_bot import dispatcher
+from tg_bot.modules.disable import (DisableAbleCommandHandler,
                                           DisableAbleMessageHandler)
 from tg_bot.modules.sql import afk_sql as sql
 from tg_bot.modules.users import get_user_id
