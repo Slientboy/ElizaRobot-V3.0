@@ -145,23 +145,23 @@ def start(update, context):
 
         else:
             first_name = update.effective_user.first_name
-            update.effective_message.reply_animation(
+            update.effective_message.reply_photo(
                 BOT_IMG,
-                PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
+                caption=PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(context.bot.first_name), OWNER_ID),
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(
                     [[
                         InlineKeyboardButton(
-                            text="Add saber to your group",
+                            text="Add Eliza to your group",
                             url="t.me/{}?startgroup=true".format(context.bot.username))
                     ],
                     [
                         InlineKeyboardButton(
                             text="Support Chat ",
-                            url="https://t.me/fateUnion"),
+                            url="https://t.me/fion"),
                         InlineKeyboardButton(
                             text="Updates ",
-                            url="https://t.me/fateunionupdates")
+                            url="https://t.me/fateundates")
                     ],
                     [
                         InlineKeyboardButton(
