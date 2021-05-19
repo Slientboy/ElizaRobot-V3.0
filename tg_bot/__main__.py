@@ -37,7 +37,7 @@ BOT_IMG = "https://telegra.ph/file/f05e6aff8aa6d5da89242.jpg"
 
 
 HELP_STRINGS = """
-*Helpful Commands :* [.](https://telegra.ph/file/1a79c86d28aae591687c6.jpg)
+*Helpful Commands :* [.](https://telegra.ph/file/eae9b1e1b1b9ab49a4ad4.jpg)
 ✧ /start: Starts me! You've probably already used this.
 ✧ /help: Sends this message; I'll tell you more about myself!
 ✧ /settings: 
@@ -158,10 +158,10 @@ def start(update, context):
                     [
                         InlineKeyboardButton(
                             text="Support Chat ",
-                            url="https://t.me/fion"),
+                            url="https://t.me/eagleunionelizasupport"),
                         InlineKeyboardButton(
                             text="Updates ",
-                            url="https://t.me/fateundates")
+                            url="https://t.me/eagleunionelizasupportupdates")
                     ],
                     [
                         InlineKeyboardButton(
