@@ -25,7 +25,7 @@ import requests
 from bs4 import BeautifulSoup
 from telethon import events
 
-from DaisyX import telethn
+from tg_bot import telethn
 
 
 @telethn.on(events.NewMessage(pattern="^/book (.*)"))
