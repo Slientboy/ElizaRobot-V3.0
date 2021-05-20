@@ -72,7 +72,7 @@ async def _(event):
         await client.send_file(
             event.chat_id,
             "book.txt",
-            caption=f"**BOOKS GATHERED SUCCESSFULLY!\n\nBY DAISYX. JOIN THE SUPPORT @DaisySupport_Official.**",
+            caption=f"**BOOKS GATHERED SUCCESSFULLY!\n\nBY ELIZA. JOIN THE SUPPORT @eagleunionelizasupport.**",
         )
         os.remove("book.txt")
         await KkK.delete()
