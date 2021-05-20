@@ -81,6 +81,7 @@ if ENV:
     WORKERS = int(os.environ.get('WORKERS', 8)) 
 
     CASH_API_KEY = os.environ.get('CASH_API_KEY', None)
+    YOUTUBE_API_KEY = os.environ.get('YOUTUBE_API_KEY', None)
     TIME_API_KEY = os.environ.get('TIME_API_KEY', None)
     AI_API_KEY = os.environ.get('AI_API_KEY', None)
     WALL_API = os.environ.get('WALL_API', None)
