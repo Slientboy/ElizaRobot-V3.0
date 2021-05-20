@@ -11,7 +11,7 @@ def eliza(**args):
     args['pattern'] = pattern.replace('^/', r_pattern, 1)
 
     def decorator(func):
-        telethn.add_event_handler(func, events.NewMessage(**args))
+        client.add_event_handler(func, events.NewMessage(**args))
         return func
 
     return decorator
@@ -24,7 +24,7 @@ def inlinequery(**args):
         args['pattern'] = '(?i)' + pattern
 
     def decorator(func):
-        telethn.add_event_handler(func, events.InlineQuery(**args))
+        client.add_event_handler(func, events.InlineQuery(**args))
         return func
 
     return decorator
