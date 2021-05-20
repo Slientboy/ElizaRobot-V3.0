@@ -25,10 +25,10 @@ import requests
 from bs4 import BeautifulSoup
 from telethon import events
 
-from tg_bot import telethn
+from tg_bot import client
 
 
-@telethn.on(events.NewMessage(pattern="^/book (.*)"))
+@client.on(events.NewMessage(pattern="^/book (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -69,7 +69,7 @@ async def _(event):
         f.close()
         caption = "A collabration with Friday.\n Join Support @DaisySupport_Official"
 
-        await telethn.send_file(
+        await client.send_file(
             event.chat_id,
             "book.txt",
             caption=f"**BOOKS GATHERED SUCCESSFULLY!\n\nBY DAISYX. JOIN THE SUPPORT @DaisySupport_Official.**",
