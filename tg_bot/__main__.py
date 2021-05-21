@@ -304,7 +304,7 @@ def get_help(update, context):
                     [
                         InlineKeyboardButton(
                             text="Support Chat",
-                            url="https://t.me/{}".format(@eagleunionelizasupport),
+                            url="https://t.me/{}".format(SUPPORT_CHAT),
                         )
                     ]
                 ]
