@@ -12,7 +12,7 @@ from base64 import b64decode
 from pySmartDL import SmartDL
 from telethon.tl.types import DocumentAttributeVideo, DocumentAttributeAudio
 from telethon import events
-from tg_bot.elizabot import eliza
+from tg_bot.modules.helper_funcs.eliza_key import eliza
 from tg_bot.utils import progress
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
