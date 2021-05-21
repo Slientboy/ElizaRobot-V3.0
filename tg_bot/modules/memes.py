@@ -640,7 +640,7 @@ __help__ = """
  - /shout: write anything you want to give loud shout
  - /truth or /dare: Send random truth or dare.
  - /judge : judge the people if they are saying truth.
- - /decide : can be also used with regex like: saber? <question>: randomly answer "Yes, No" etc.
+ - /decide : can be also used with regex like: eliza? <question>: randomly answer "Yes, No" etc.
 
 Some other regex filters are:
 goodmorning, good morning or goodnight, good night.
