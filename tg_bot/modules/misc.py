@@ -69,34 +69,6 @@ def paste(update: Update, context: CallbackContext):
 
 @run_async
 @typing_action
-def lyrics(update: Update, context: CallbackContext):
-    bot, args = context.bot, context.args
-    msg = update.effective_message
-    query = " ".join(args)
-    song = ""
-    if not query:
-        msg.reply_text("You haven't specified which song to look for!")
-        return
-    song = Song.find_song(query)
-    if song:
-        if song.lyrics:
-            reply = song.format()
-        else:
-            reply = "Couldn't find any lyrics for that song!"
-    else:
-        reply = "Song not found!"
-    if len(reply) > 4090:
-        with open("lyrics.txt", 'w') as f:
-            f.write(f"{reply}\n\n\nOwO UwU OmO")
-        with open("lyrics.txt", 'rb') as f:
-            msg.reply_document(document=f,
-            caption="Message length exceeded max limit! Sending as a text file.")
-    else:
-        msg.reply_text(reply)
-
-
-@run_async
-@typing_action
 def github(update, context):
     message = update.effective_message
     text = message.text[len('/git '):]
@@ -615,6 +587,7 @@ __help__ = """
  - /removebotkeyboard: Got a nasty bot keyboard stuck in your group?
  - /app <app name>: Finds an app in playstore for you
  - /cash: currency converter
+ - /book book name  all links direct download books
  - /time <query>: Gives information about a timezone.
  - /plet <text> : make ur text sticker in different colours
 
@@ -624,7 +597,6 @@ __help__ = """
 __mod_name__ = "Extra"
 
 APP_HANDLER = DisableAbleCommandHandler("app", app)
-LYRICS_HANDLER = DisableAbleCommandHandler("lyrics", lyrics, pass_args=True)
 GIFID_HANDLER = DisableAbleCommandHandler("gifid", gifid) 
 ECHO_HANDLER = CommandHandler("echo", echo, filters=CustomFilters.sudo_filter)
 MD_HELP_HANDLER = CommandHandler("markdownhelp", markdown_help, filters=Filters.private)
@@ -656,7 +628,6 @@ GET_PASTE_HANDLER = DisableAbleCommandHandler("getpaste",
 
 
 dispatcher.add_handler(APP_HANDLER)
-dispatcher.add_handler(LYRICS_HANDLER)
 dispatcher.add_handler(GITHUB_HANDLER)
 dispatcher.add_handler(REPO_HANDLER)
 dispatcher.add_handler(PASTE_HANDLER)
