@@ -150,4 +150,4 @@ __help__ = """
  
  • `/ytaudio`** <link> or `/ytvideo`** <link>: Downlods a video or audio from a youtube video to the bots local serve.. 
 """
-__mod_name__ = "music"
+__mod_name__ = "Music"
