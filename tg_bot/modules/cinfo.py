@@ -3,6 +3,7 @@ from pyrogram import Client, filters
 from pyrogram.errors.exceptions.bad_request_400 import MessageNotModified
 
 from tg_bot import pbot
+from tg_bot import get_entity
 
 ZWS = "\u200B"
 
