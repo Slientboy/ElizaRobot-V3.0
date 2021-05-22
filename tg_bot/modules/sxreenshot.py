@@ -1,12 +1,5 @@
-# COPYRIGHT (C) BY LEGENDX2222 AND PROBOYX
-"""
-(((((((((((((((((((((((@LEGENDX2222)))))))))))))))))))))))))))
-(((((((((((((((((((((((@LEGENDX2222)))))))))))))))))))))))))))
-(((((((((((((((((((((((@LEGENDX2222)))))))))))))))))))))))))))
-(((((((((((((((((((((((@LEGENDX2222)))))))))))))))))))))))))))
-"""
 import io
-from tg_bot import client as borg
+from tg_bot import client
 import requests
 from tg_bot.events import register
 
@@ -28,9 +21,9 @@ async def _(event):
     contentType = response_api.headers["content-type"]
     if "image" in contentType:
         with io.BytesIO(response_api.content) as screenshot_image:
-            screenshot_image.name = "GRANDBOT.png"
+            screenshot_image.name = "ElizaRobot.png"
             try:
-                await borg.send_file(
+                await client.send_file(
                     event.chat_id,
                     screenshot_image,
                     caption=lel,
