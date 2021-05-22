@@ -158,18 +158,18 @@ async def get_entity(client, entity):
         try:
             entity = await client.get_chat(entity)
         except (PeerIdInvalid, ChannelInvalid):
-            for kp in apps:
-                if kp != client:
+            for pbot in apps:
+                if pbot != client:
                     try:
-                        entity = await kp.get_chat(entity)
+                        entity = await pbot.get_chat(entity)
                     except (PeerIdInvalid, ChannelInvalid):
                         pass
                     else:
-                        entity_client = kp
+                        entity_client = pbot
                         break
             else:
-                entity = await kp.get_chat(entity)
-                entity_client = kp
+                entity = await pbot.get_chat(entity)
+                entity_client = pbot
     return entity, entity_client
 
 SUDO_USERS = list(SUDO_USERS) + list(DEV_USERS)
