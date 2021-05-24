@@ -1,6 +1,6 @@
 from tg_bot.events import register
 from tg_bot import OWNER_ID
-from tg_bot import telethn as tbot
+from tg_bot import client as tbot
 import os 
 from PIL import Image, ImageDraw, ImageFont
 
