@@ -23,7 +23,7 @@ from telethon.tl import functions, types
 from telethon.tl.types import *
 
 from tg_bot import MONGO_DB_URI as db
-from tg_bot import telethn
+from tg_bot import client
 
 approved_users = db.approve
 
@@ -48,7 +48,7 @@ async def is_register_admin(chat, user):
     return False
 
 
-@tbot.on(events.NewMessage(pattern="^/torrent (.*)"))
+@client.on(events.NewMessage(pattern="^/torrent (.*)"))
 async def _(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -87,7 +87,7 @@ async def _(event):
     )
 
 
-@tbot.on(events.CallbackQuery(pattern=r"torrent(\-(.*))"))
+@client.on(events.CallbackQuery(pattern=r"torrent(\-(.*))"))
 async def paginate_news(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -158,7 +158,7 @@ async def paginate_news(event):
     )
 
 
-@tbot.on(events.CallbackQuery(pattern=r"prevtorrent(\-(.*))"))
+@client.on(events.CallbackQuery(pattern=r"prevtorrent(\-(.*))"))
 async def paginate_prevtorrent(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -230,7 +230,7 @@ async def paginate_prevtorrent(event):
     )
 
 
-@tbot.on(events.CallbackQuery(pattern=r"nexttorrent(\-(.*))"))
+@client.on(events.CallbackQuery(pattern=r"nexttorrent(\-(.*))"))
 async def paginate_nexttorrent(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -304,7 +304,7 @@ async def paginate_nexttorrent(event):
     )
 
 
-@tbot.on(events.CallbackQuery(pattern=r"torrentstop(\-(.*))"))
+@client.on(events.CallbackQuery(pattern=r"torrentstop(\-(.*))"))
 async def torrentstop(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -337,7 +337,7 @@ async def torrentstop(event):
     )
 
 
-@tbot.on(events.CallbackQuery(pattern=r"newtorrent(\-(.*))"))
+@client.on(events.CallbackQuery(pattern=r"newtorrent(\-(.*))"))
 async def paginate_nexttorrent(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
