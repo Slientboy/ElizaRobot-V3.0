@@ -25,7 +25,6 @@ from telethon.tl.types import *
 from tg_bot import MONGO_DB_URI as db
 from tg_bot import client
 
-approved_users = db.approve
 
 
 async def is_register_admin(chat, user):
