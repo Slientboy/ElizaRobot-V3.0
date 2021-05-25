@@ -62,6 +62,7 @@ if ENV:
     EVENT_LOGS = os.environ.get('EVENT_LOGS', None)
     MESSAGE_DUMP = os.environ.get('MESSAGE_DUMP', None) 
     ERROR_DUMP = os.environ.get('ERROR_DUMP', None)
+    MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
     JOIN_LOGGER = os.environ.get('JOIN_LOGGER', None)
 
     WEBHOOK = bool(os.environ.get('WEBHOOK', False))
