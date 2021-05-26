@@ -24,6 +24,7 @@ from telethon.tl.types import *
 
 from tg_bot import MONGO_DB_URI as approvedb
 from tg_bot import client
+from  tg_bot import MONGO_DB_URI as db
 
 approved_users = db.approve
 
