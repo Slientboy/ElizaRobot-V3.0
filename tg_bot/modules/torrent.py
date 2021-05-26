@@ -22,7 +22,7 @@ from telethon import events
 from telethon.tl import functions, types
 from telethon.tl.types import *
 
-from tg_bot import MONGO_DB_URI as approvedb
+from tg_bot import MONGO_DB_URI as approve
 from tg_bot import client
 from  tg_bot import MONGO_DB_URI as db
 
