@@ -22,10 +22,10 @@ from telethon import events
 from telethon.tl import functions, types
 from telethon.tl.types import *
 
-from tg_bot import MONGO_DB_URI as db
+from tg_bot import MONGO_DB_URI as approvedb
 from tg_bot import client
 
-
+approved_users = db.approve
 
 async def is_register_admin(chat, user):
     if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
