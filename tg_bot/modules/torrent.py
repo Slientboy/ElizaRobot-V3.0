@@ -11,6 +11,7 @@ from tg_bot import MONGO_DB_URI as approve
 from tg_bot import client
 from tg_bot import MONGO_DB_URI as db
 from tg_bot import client as tbot
+
 approved_users = db
 
 async def is_register_admin(chat, user):
