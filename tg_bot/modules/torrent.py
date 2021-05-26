@@ -11,7 +11,7 @@ from tg_bot import MONGO_DB_URI as approve
 from tg_bot import client
 from tg_bot import MONGO_DB_URI as db
 
-approved_users = db.approve
+approved_users = db
 
 async def is_register_admin(chat, user):
     if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
