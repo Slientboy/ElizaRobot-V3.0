@@ -9,7 +9,7 @@ from telethon.tl.types import *
 
 from tg_bot import MONGO_DB_URI as approve
 from tg_bot import client
-from  tg_bot import MONGO_DB_URI as db
+from tg_bot import MONGO_DB_URI as db
 
 approved_users = db.approve
 
