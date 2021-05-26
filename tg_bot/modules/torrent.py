@@ -10,14 +10,14 @@ from telethon.tl.types import *
 from tg_bot import MONGO_DB_URI as approve
 from tg_bot import client
 from tg_bot import MONGO_DB_URI as db
-
+from tg_bot import client as tbot
 approved_users = db
 
 async def is_register_admin(chat, user):
     if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
         return isinstance(
             (
-                await tbot(functions.channels.GetParticipantRequest(chat, user))
+                await client(functions.channels.GetParticipantRequest(chat, user))
             ).participant,
             (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
         )
@@ -35,7 +35,7 @@ async def is_register_admin(chat, user):
 
 @client.on(events.NewMessage(pattern="^/torrent (.*)"))
 async def _(event):
-    approved_userss = approved_users.find({})
+    approved_userss = approved_users ({})
     for ch in approved_userss:
         iid = ch["id"]
         userss = ch["user"]
@@ -55,7 +55,7 @@ async def _(event):
     await tbot.edit_message(
         chatid,
         msgid,
-        "Daisy found some torrents for you. Take a look 👇",
+        "Eliza found some torrents for you. Take a look 👇",
         buttons=[
             [
                 Button.inline(
@@ -74,7 +74,7 @@ async def _(event):
 
 @client.on(events.CallbackQuery(pattern=r"torrent(\-(.*))"))
 async def paginate_news(event):
-    approved_userss = approved_users.find({})
+    approved_userss = approved_users({})
     for ch in approved_userss:
         iid = ch["id"]
         userss = ch["user"]
@@ -145,7 +145,7 @@ async def paginate_news(event):
 
 @client.on(events.CallbackQuery(pattern=r"prevtorrent(\-(.*))"))
 async def paginate_prevtorrent(event):
-    approved_userss = approved_users.find({})
+    approved_userss = approved_users({})
     for ch in approved_userss:
         iid = ch["id"]
         userss = ch["user"]
