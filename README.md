@@ -1,6 +1,6 @@
 <h1 align="center"><b>❤️ ElizaRobot 3.0  ❤️</b></h1>
 
-<h4 align="center">A Powerful, Smart And Simple Group Manager <br> ... Written with AioGram , Pyrogram and Telethon...</h4>
+<h4 align="center">A Powerful, Smart And Simple Group Manager <br> ... Written with Python , Pyrogram and Telethon...</h4>
 <p align='center'>
   <a href="https://www.python.org/" alt="made-with-python"> <img src="https://img.shields.io/badge/Made%20with-Python-1f425f.svg?style=flat-square&logo=python&color=blue" /> </a>
   <a href="https://github.com/TeamDaisyX/DaisyX-v2/graphs/commit-activity" alt="Maintenance"> <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=flat-square" /> </a>
