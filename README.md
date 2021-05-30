@@ -16,7 +16,7 @@
     <a href="https://pypi.org/project/Telethon/"> <img src="https://img.shields.io/pypi/v/telethon?color=yellow&label=telethon&logo=python&logoColor=green&style=for-the-badge" /></a>
 </p>
 
-> ⭐️ Thanks to everyone who starred Daisy, That is the greatest pleasure we have !
+> ⭐️ Thanks to everyone who starred Eliza, That is the greatest pleasure we have !
 
 
 ### Config Vars 📒
