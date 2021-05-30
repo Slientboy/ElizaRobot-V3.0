@@ -35,5 +35,5 @@
 # Credit
 
 #### • NOOR ALI    »»  <a href="https://github.com/kari-36" alt="Noorali"> <img src="https://img.shields.io/badge/noor ali-90302f?logo=github" /></a> (OWNER)
-#### • Hyper   »»  <a href="https://github.com/hyper-ub" alt="Hyper"> <img src="https://img.shields.io/badge/Hyper-107D8D?logo=github"
+#### • Hyper   »»  <a href="https://github.com/hyper-ub" alt="Hyper"> <img src="https://img.shields.io/badge/Hyper-107D8D?logo=github" /></a>
 
