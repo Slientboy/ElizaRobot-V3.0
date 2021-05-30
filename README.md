@@ -21,7 +21,7 @@
 
 ### Config Vars 📒
 ```
-[+] Make Sure You Add All These Comfig Vars. 
+[+] Make Sure You Add All These Config Vars. 
     [-] API_ID:   You can get this value from https://my.telegram.org
     [-] API_HASH :   You can get this value from https://my.telegram.org
     [-] MONGO_DB_URI : Your Mongo DB DataBase Url. .
