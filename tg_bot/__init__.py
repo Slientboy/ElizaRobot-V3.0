@@ -6,6 +6,8 @@ import spamwatch
 from redis import StrictRedis
 from pyrogram import Client, errors
 
+from aiohttp import ClientSession
+from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 import telegram.ext as tg
 from telethon import TelegramClient
 
@@ -142,7 +144,7 @@ updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 client = TelegramClient("saber", API_ID, API_HASH)
 pbot = Client("saberPyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 mongo_client = MongoClient(MONGO_DB_URI)
-db = mongo_client.ElizaRobot
+db = mongo_client.wbb
 dispatcher = updater.dispatcher
 
 kp = Client(":memory:", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN, workers=min(32, os.cpu_count() + 4))
