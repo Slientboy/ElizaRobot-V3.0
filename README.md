@@ -17,3 +17,18 @@
 </p>
 
 > ⭐️ Thanks to everyone who starred Daisy, That is the greatest pleasure we have !
+
+
+### Config Vars 📒
+```
+[+] Make Sure You Add All These Comfig Vars. 
+    [-] API_ID:   You can get this value from https://my.telegram.org
+    [-] API_HASH :   You can get this value from https://my.telegram.org
+    [-] MONGO_DB_URI : Your Mongo DB DataBase Url. .
+    [-] TOKEN: Get from botfarther
+    [-] DATABASE_URL: from elephantsql.com
+    [-] OWNER_ID: ur id
+    [-] REDIS_URI: from redislabs.com (remove port)
+[+] The ElizaRobot won't run without setting the Config vars.
+```
+
