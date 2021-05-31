@@ -36,4 +36,4 @@
 
 #### • NOOR ALI    »»  <a href="https://github.com/kari-36" alt="Noorali"> <img src="https://img.shields.io/badge/noor ali-90302f?logo=github" /></a> (OWNER)
 #### • Hyper   »»  <a href="https://github.com/hyper-ub" alt="Hyper"> <img src="https://img.shields.io/badge/Hyper-107D8D?logo=github" /></a>
-
+#### • LEGENDX     »»  <a href="https://github.com/legendXOp" alt="LegendXOp"> <img src="https://img.shields.io/badge/LegendX-92CALA?logo=github" /></a>
