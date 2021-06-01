@@ -55,3 +55,4 @@ carbonnow
 aiofiles
 uvloop
 wget
+aiohttpsession
