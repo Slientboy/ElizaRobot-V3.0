@@ -52,4 +52,4 @@ async def member_permissions(chat_id: int, user_id: int):
     return perms
 
 
-from tg_bot.modules.permissions import adminsOnly
+from tg_bot.modules.permission import adminsOnly
