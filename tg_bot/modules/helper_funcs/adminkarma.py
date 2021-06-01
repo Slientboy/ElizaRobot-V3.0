@@ -23,7 +23,7 @@ import asyncio
 from pyrogram import filters
 from pyrogram.types import ChatPermissions, Message
 
-from tg_bot.modules.errors import capture_err
+from tg_bot.modules.error import capture_err
 from tg_bot.utils.dbfunctions import (add_warn, get_warn, int_to_alpha,
                                    remove_warns)
 
