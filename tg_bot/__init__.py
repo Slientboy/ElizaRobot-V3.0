@@ -145,6 +145,7 @@ client = TelegramClient("saber", API_ID, API_HASH)
 pbot = Client("saberPyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 mongo_client = MongoClient(MONGO_DB_URI)
 db = mongo_client.wbb
+aiohttpsession = ClientSession()
 dispatcher = updater.dispatcher
 
 kp = Client(":memory:", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN, workers=min(32, os.cpu_count() + 4))
