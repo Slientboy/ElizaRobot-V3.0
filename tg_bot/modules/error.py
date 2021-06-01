@@ -6,7 +6,7 @@ from functools import wraps
 
 from pyrogram.errors.exceptions.forbidden_403 import ChatWriteForbidden
 
-from tg_bot import LOG_GROUP_ID, client as app
+from tg_bot import MESSAGE_DUMP, client as app
 
 
 def split_limits(text):
