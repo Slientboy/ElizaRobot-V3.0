@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-from tg_bot import aiohttpsession
+from tg_bot import aiohtt
 
 headers = {
     "Accept": "application/json",
@@ -30,7 +30,7 @@ headers = {
 
 
 async def fetch(url: str):
-    async with aiohttpsession.get(url, headers=headers) as resp:
+    async with aiohtt.get(url, headers=headers) as resp:
         try:
             data = await resp.json()
         except Exception:
