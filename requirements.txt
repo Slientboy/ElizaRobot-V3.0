@@ -51,9 +51,7 @@ pytube
 youtube-search-python
 google-api-python-client
 telegraph
-aiohttp
 carbonnow
-aiohttp
 aiofiles
 uvloop
 wget
