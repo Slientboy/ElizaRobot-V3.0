@@ -27,7 +27,7 @@ from pyrogram import filters
 
 from tg_bot import client
 from tg_bot.modules.error import capture_err
-from tg_bot.modules.helper_funcs import member_permissions
+from tg_bot.modules.helper_funcs.adminkarma import member_permissions
 from tg_bot.utils.dbfunctions import (alpha_to_int, get_karma, get_karmas,
                                    int_to_alpha, is_karma_on, karma_off,
                                    karma_on, update_karma)
