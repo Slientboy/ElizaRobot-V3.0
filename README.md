@@ -1,5 +1,3 @@
-#readme copy by Daisy x 
-
 <h1 align="center"><b>❤️ ElizaRobot 3.0  ❤️</b></h1>
 
 <h4 align="center">A Powerful, Smart And Simple Group Manager <br> ... Written with Python , Pyrogram and Telethon...</h4>
