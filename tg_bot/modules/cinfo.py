@@ -2,8 +2,7 @@ import html
 from pyrogram import Client, filters
 from pyrogram.errors.exceptions.bad_request_400 import MessageNotModified
 
-from tg_bot import pbot
-from tg_bot import get_entity
+from tg_bot import kp, get_entity
 
 ZWS = "\u200B"
 
@@ -32,7 +31,7 @@ def _generate_sexy(entity, ping):
     return sexy_text
 
 
-@pbot.on_message(filters.command(["cinfo"], prefixes=["/", "!"]))
+@kp.on_message(filters.command(["cinfo"], prefixes=["/", "!"]))
 async def info(client, message):
     entity = message.chat
     command = message.command
@@ -73,7 +72,7 @@ async def info(client, message):
             pass
 
 
-@pbot.on_message(filters.command(["getid"], prefixes=["/", "!"]))
+@kp.on_message(filters.command(["getid"], prefixes=["/", "!"]))
 async def id(client, message):
     text_unping = "<b>Chat ID:</b>"
     if message.chat.username:
