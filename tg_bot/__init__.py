@@ -150,7 +150,6 @@ dispatcher = updater.dispatcher
 
 kp = Client(":memory:", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN, workers=min(32, os.cpu_count() + 4))
 
-
 async def get_entity(client, entity):
     entity_client = client
     if not isinstance(entity, Chat):
@@ -163,19 +162,20 @@ async def get_entity(client, entity):
         try:
             entity = await client.get_chat(entity)
         except (PeerIdInvalid, ChannelInvalid):
-            for pbot in apps:
-                if pbot != client:
+            for kp in apps:
+                if kp != client:
                     try:
-                        entity = await pbot.get_chat(entity)
+                        entity = await kp.get_chat(entity)
                     except (PeerIdInvalid, ChannelInvalid):
                         pass
                     else:
-                        entity_client = pbot
+                        entity_client = kp
                         break
             else:
-                entity = await pbot.get_chat(entity)
-                entity_client = pbot
+                entity = await kp.get_chat(entity)
+                entity_client = kp
     return entity, entity_client
+
 
 SUDO_USERS = list(SUDO_USERS) + list(DEV_USERS)
 DEV_USERS = list(DEV_USERS)
