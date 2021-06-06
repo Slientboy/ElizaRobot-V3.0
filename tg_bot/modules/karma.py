@@ -1,7 +1,7 @@
 from tg_bot import pbot
-from tg_bot.utlis.dbfunctions import (update_karma, get_karma, get_karmas,
+from tg_bot.utils.dbfunctions import (update_karma, get_karma, get_karmas,
                                    int_to_alpha, alpha_to_int)
-from tg_bot.utlis.filter_groups import karma_positive_group, karma_negative_group
+from tg_bot.utils.filter_groups import karma_positive_group, karma_negative_group
 from pyrogram import filters
 
 
