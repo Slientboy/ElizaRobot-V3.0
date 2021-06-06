@@ -14,7 +14,7 @@
 #    along with this program.  If not, see < https://www.gnu.org/licenses/agpl-3.0.en.html >
 
 
-from tg_bot import client as tbot, CMD_HELP
+from tg_bot import client as tbot,
 import os
 import requests, json
 from pymongo import MongoClient
@@ -411,5 +411,3 @@ file_helpo = file_help.replace("_", " ")
 __help__ = """
  - /torrent <item>: Returns torrent links for the item.
 """
-
-CMD_HELP.update({file_helpo: [file_helpo, __help__]})
