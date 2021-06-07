@@ -14,7 +14,7 @@
 #    along with this program.  If not, see < https://www.gnu.org/licenses/agpl-3.0.en.html >
 
 
-from julia import client as tbot
+from tg_bot import client as tbot
 import os
 import requests, json
 from pymongo import MongoClient
