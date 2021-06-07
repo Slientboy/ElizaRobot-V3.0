@@ -1,35 +1,30 @@
-#    MissJuliaRobot (A Telegram Bot Project)
-#    Copyright (C) 2019-Present Anonymous (https://t.me/MissJulia_Robot)
-
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published by
-#    the Free Software Foundation, in version 3 of the License.
-
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see < https://www.gnu.org/licenses/agpl-3.0.en.html >
+# Copyright (C) 2021 TeamDaisyX
 
 
-from tg_bot import client as tbot
-import os
-import requests, json
-from pymongo import MongoClient
+# This file is part of Daisy (Telegram Bot)
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+import requests
 from telethon import *
 from telethon import events
-from telethon.tl import functions
-from telethon.tl import types
+from telethon.tl import functions, types
 from telethon.tl.types import *
 
-from tg_bot import *
-from tg_bot.events import register
+from pyromongo import MongoClient as db
+from tg_bot import client as tbot
 
-client = MongoClient()
-client = MongoClient(MONGO_DB_URI)
-db = client["missjuliarobot"]
 approved_users = db.approve
 
 
@@ -41,11 +36,19 @@ async def is_register_admin(chat, user):
             ).participant,
             (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
         )
-    if isinstance(chat, types.InputPeerUser):
-        return True
+    if isinstance(chat, types.InputPeerChat):
+        ui = await tbot.get_peer_id(user)
+        ps = (
+            await tbot(functions.messages.GetFullChatRequest(chat.chat_id))
+        ).full_chat.participants.participants
+        return isinstance(
+            next((p for p in ps if p.user_id == ui), None),
+            (types.ChatParticipantAdmin, types.ChatParticipantCreator),
+        )
+    return False
 
 
-@register(pattern="^/torrent (.*)")
+@tbot.on(events.NewMessage(pattern="^/torrent (.*)"))
 async def _(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -67,20 +70,25 @@ async def _(event):
     await tbot.edit_message(
         chatid,
         msgid,
-        "Click on the below button to read the torrents 👇",
+        "Daisy found some torrents for you. Take a look 👇",
         buttons=[
             [
                 Button.inline(
-                    "▶️", data=f"torrent-{sender}|{search}|{index}|{chatid}|{msgid}"
+                    "📤 Get Torrents from Sumanjay's API",
+                    data=f"torrent-{sender}|{search}|{index}|{chatid}|{msgid}",
                 )
             ],
-            [Button.inline("❌", data=f"torrentstop-{sender}|{chatid}|{msgid}")],
+            [
+                Button.inline(
+                    "❌ Cancel Search", data=f"torrentstop-{sender}|{chatid}|{msgid}"
+                )
+            ],
         ],
     )
 
 
-@tbot.on(events.NewMessage(pattern="^/torrent (.*)"))
-async def _(event):
+@tbot.on(events.CallbackQuery(pattern=r"torrent(\-(.*))"))
+async def paginate_news(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
         iid = ch["id"]
@@ -150,7 +158,7 @@ async def _(event):
     )
 
 
-@tbot.on(events.NewMessage(pattern=r"prevtorrent(\-(.*))"))
+@tbot.on(events.CallbackQuery(pattern=r"prevtorrent(\-(.*))"))
 async def paginate_prevtorrent(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -182,9 +190,7 @@ async def paginate_prevtorrent(event):
     try:
         results = requests.get(url).json()
     except Exception as e:
-        await event.reply(
-            "Sorry, either the server is down or no results found for your query."
-        )
+        await event.reply("Sorry, Daisy Cant found any torrents for that word")
         print(e)
         return
     vector = len(results)
@@ -224,7 +230,7 @@ async def paginate_prevtorrent(event):
     )
 
 
-@tbot.on(events.NewMessage(pattern=r"nexttorrent(\-(.*))"))
+@tbot.on(events.CallbackQuery(pattern=r"nexttorrent(\-(.*))"))
 async def paginate_nexttorrent(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -298,7 +304,7 @@ async def paginate_nexttorrent(event):
     )
 
 
-@tbot.on(events.NewMessage(pattern=r"torrentstop(\-(.*))"))
+@tbot.on(events.CallbackQuery(pattern=r"torrentstop(\-(.*))"))
 async def torrentstop(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -326,12 +332,12 @@ async def torrentstop(event):
     await tbot.edit_message(
         chatid,
         msgid,
-        "Thanks for using.\n❤️ from [Julia](t.me/MissJuliaRobot) !",
+        "Thanks for using.\n❤️ from [Daisy X](t.me/DaisyXBot) !",
         link_preview=False,
     )
 
 
-@tbot.on(events.NewMessage(pattern=r"newtorrent(\-(.*))"))
+@tbot.on(events.CallbackQuery(pattern=r"newtorrent(\-(.*))"))
 async def paginate_nexttorrent(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -404,11 +410,10 @@ async def paginate_nexttorrent(event):
     )
 
 
-file_help = os.path.basename(__file__)
-file_help = file_help.replace(".py", "")
-file_helpo = file_help.replace("_", " ")
+_help_ = """
+ - /torrent <i>text</i>: Search for torrent links
 
-__help__ = """
- - /torrent <item>: Returns torrent links for the item.
+Special Credits to Sumanjay for api and also for julia project
 """
 
+_mod_name_ = "Torrent"
