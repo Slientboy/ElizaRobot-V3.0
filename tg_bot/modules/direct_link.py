@@ -83,5 +83,3 @@ def useragent():
     user_agent = choice(useragents)
     return user_agent.text
 
-
-__help__ = True
