@@ -22,7 +22,7 @@ from telethon import events
 from telethon.tl import functions, types
 from telethon.tl.types import *
 
-from pyromongo import MongoClient as db
+from pymongo import MongoClient as db
 from tg_bot import client as tbot
 
 approved_users = db.approve
