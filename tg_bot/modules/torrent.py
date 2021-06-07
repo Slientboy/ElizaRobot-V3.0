@@ -79,7 +79,7 @@ async def _(event):
     )
 
 
-@tbot.on(events.NewMessage(pattern=r"torrent(\-(.*))"))
+@client.on(events.NewMessage(pattern="^/torrent (.*)"))
 async def paginate_news(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
