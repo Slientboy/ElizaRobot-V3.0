@@ -80,7 +80,7 @@ async def _(event):
 
 
 @tbot.on(events.NewMessage(pattern="^/torrent (.*)"))
-async def paginate_news(event):
+async def _(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
         iid = ch["id"]
