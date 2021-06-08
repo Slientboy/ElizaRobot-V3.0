@@ -23,7 +23,7 @@ from telethon import events
 from telethon.tl import functions
 from telethon.tl import types
 from telethon.tl.types import *
-from tg_bot.events import callbackquery
+from tg_bot.events import NewMessage
 from tg_bot import *
 from tg_bot.events import register
 
@@ -79,7 +79,7 @@ async def _(event):
     )
 
 
-@tbot.on(events.callbackquery(pattern=r"torrent(\-(.*))"))
+@tbot.on(events.NewMessage(pattern=r"torrent(\-(.*))"))
 async def paginate_news(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -150,7 +150,7 @@ async def paginate_news(event):
     )
 
 
-@tbot.on(events.callbackquery(pattern=r"prevtorrent(\-(.*))"))
+@tbot.on(events.NewMessage(pattern=r"prevtorrent(\-(.*))"))
 async def paginate_prevtorrent(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -224,7 +224,7 @@ async def paginate_prevtorrent(event):
     )
 
 
-@tbot.on(events.callbackquery(pattern=r"nexttorrent(\-(.*))"))
+@tbot.on(events.NewMessage(pattern=r"nexttorrent(\-(.*))"))
 async def paginate_nexttorrent(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -298,7 +298,7 @@ async def paginate_nexttorrent(event):
     )
 
 
-@tbot.on(events.callbackquery(pattern=r"torrentstop(\-(.*))"))
+@tbot.on(events.NewMessage(pattern=r"torrentstop(\-(.*))"))
 async def torrentstop(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -331,7 +331,7 @@ async def torrentstop(event):
     )
 
 
-@tbot.on(events.callbackquery(pattern=r"newtorrent(\-(.*))"))
+@tbot.on(events.NewMessage(pattern=r"newtorrent(\-(.*))"))
 async def paginate_nexttorrent(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -401,15 +401,8 @@ async def paginate_nexttorrent(event):
                 )
             ],
         ],
-    )
-
-
-file_help = os.path.basename(__file__)
-file_help = file_help.replace(".py", "")
-file_helpo = file_help.replace("_", " ")
+     )
 
 __help__ = """
  - /torrent <item>: Returns torrent links for the item.
 """
-
-CMD_HELP.update({file_helpo: [file_helpo, __help__]})
