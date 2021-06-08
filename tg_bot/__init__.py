@@ -12,6 +12,8 @@ import telegram.ext as tg
 from telethon import TelegramClient
 
 since_time_start = time.time()
+CMD_LIST = {}
+CMD_HELP = {}
 
 # enable logging
 logging.basicConfig(
