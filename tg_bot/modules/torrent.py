@@ -79,7 +79,7 @@ async def _(event):
     )
 
 
-@tbot.on(events.CallbackQuery(pattern=r"torrent(\-(.*))"))
+@tbot.on(events.callbackquery(pattern=r"torrent(\-(.*))"))
 async def paginate_news(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
