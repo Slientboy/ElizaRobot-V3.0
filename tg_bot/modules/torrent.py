@@ -150,7 +150,7 @@ async def paginate_news(event):
     )
 
 
-@tbot.on(events.CallbackQuery(pattern=r"prevtorrent(\-(.*))"))
+@tbot.on(events.callbackquery(pattern=r"prevtorrent(\-(.*))"))
 async def paginate_prevtorrent(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -224,7 +224,7 @@ async def paginate_prevtorrent(event):
     )
 
 
-@tbot.on(events.CallbackQuery(pattern=r"nexttorrent(\-(.*))"))
+@tbot.on(events.callbackquery(pattern=r"nexttorrent(\-(.*))"))
 async def paginate_nexttorrent(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -298,7 +298,7 @@ async def paginate_nexttorrent(event):
     )
 
 
-@tbot.on(events.CallbackQuery(pattern=r"torrentstop(\-(.*))"))
+@tbot.on(events.callbackquery(pattern=r"torrentstop(\-(.*))"))
 async def torrentstop(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
@@ -331,7 +331,7 @@ async def torrentstop(event):
     )
 
 
-@tbot.on(events.CallbackQuery(pattern=r"newtorrent(\-(.*))"))
+@tbot.on(events.callbackquery(pattern=r"newtorrent(\-(.*))"))
 async def paginate_nexttorrent(event):
     approved_userss = approved_users.find({})
     for ch in approved_userss:
