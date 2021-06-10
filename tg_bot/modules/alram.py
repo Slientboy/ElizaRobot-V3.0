@@ -125,9 +125,9 @@ async def _(event):
     await event.reply("Alarm set successfully !")
 
 
-@tbot.on(events.NewMessage(pattern=None))
-async def tikclock(event):
-    if event.is_private:
+@tbot.on(events.NewMessage(pattern="^/tikclock (.*)"))
+async def _(event):
+    if event.fwd_from:
         return
     chats = alarms.find({})
     for c in chats:
