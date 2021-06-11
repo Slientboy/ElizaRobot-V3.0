@@ -6,7 +6,6 @@ import spamwatch
 from redis import StrictRedis
 from pyrogram import Client, errors
 
-from telethon.sessions import StringSession
 from aiohttp import ClientSession
 from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 import telegram.ext as tg
@@ -77,7 +76,6 @@ if ENV:
 
     API_ID = os.environ.get('API_ID', None)
     API_HASH = os.environ.get('API_HASH', None)
-    STRING_SESSION = os.environ.get("STRING_SESSION", None)
     DB_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
     DONATION_LINK = os.environ.get('DONATION_LINK')
     LOAD = os.environ.get("LOAD", "").split()
@@ -140,12 +138,6 @@ try:
 except BaseException:
     raise Exception("Your redis server is not alive, please check again.")
 
-ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
-try:
-    ubot.start()
-except BaseException:
-    print("Userbot Error ! Have you added a STRING_SESSION in deploying??")
-    sys.exit(1)
 
 api_id = API_ID
 api_hash = API_HASH
