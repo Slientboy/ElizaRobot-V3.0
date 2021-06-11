@@ -121,11 +121,7 @@ if ENV:
 else:
      LOGGER.warning("Unknown Crash!")
   
-#__________________________________________________________________________________________________________________________________
-    STRING_SESSION = os.environ.get("STRING_SESSION", True)
-    APP_ID = os.environ.get("APP_ID", True)
-    APP_HASH = os.environ.get("APP_HASH", True)    
-#__________________________________________________________________________________________________________________________________
+
 
 SUDO_USERS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
