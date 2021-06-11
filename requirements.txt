@@ -58,3 +58,4 @@ wget
 pymongo==3.11.0
 dateparser==1.0.0
 envparse
+asyncio
