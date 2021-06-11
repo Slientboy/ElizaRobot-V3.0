@@ -138,6 +138,12 @@ try:
 except BaseException:
     raise Exception("Your redis server is not alive, please check again.")
 
+ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
+try:
+    ubot.start()
+except BaseException:
+    print("Userbot Error ! Have you added a STRING_SESSION in deploying??")
+    sys.exit(1)
 
 api_id = API_ID
 api_hash = API_HASH
