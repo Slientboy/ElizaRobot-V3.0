@@ -39,7 +39,7 @@ async def is_register_admin(chat, user):
 
 
 @register(pattern="^/gen (.*)")
-async def alive(event):
+async def _(event):
     if event.is_group:
         if await is_register_admin(event.input_chat, event.message.sender_id):
             pass
@@ -73,7 +73,7 @@ async def alive(event):
 
 
 @register(pattern="^/key (.*)")
-async def alive(event):
+async def _(event):
     if event.is_group:
         if await is_register_admin(event.input_chat, event.message.sender_id):
             pass
@@ -116,7 +116,7 @@ async def alive(event):
 
 
 @register(pattern="^/ss (.*)")
-async def alive(event):
+async def _(event):
     if event.is_group:
         if await is_register_admin(event.input_chat, event.message.sender_id):
             pass
@@ -149,7 +149,7 @@ async def alive(event):
 
 
 @register(pattern="^/pp (.*)")
-async def alive(event):
+async def _(event):
     if event.is_group:
         if await is_register_admin(event.input_chat, event.message.sender_id):
             pass
@@ -182,7 +182,7 @@ async def alive(event):
 
 
 @register(pattern="^/ch (.*)")
-async def alive(event):
+async def _(event):
     if event.is_group:
         if await is_register_admin(event.input_chat, event.message.sender_id):
             pass
@@ -215,7 +215,7 @@ async def alive(event):
 
 
 @register(pattern="^/au (.*)")
-async def alive(event):
+async def _(event):
     if event.is_group:
         if await is_register_admin(event.input_chat, event.message.sender_id):
             pass
@@ -248,7 +248,7 @@ async def alive(event):
 
 
 @register(pattern="^/bin (.*)")
-async def alive(event):
+async def _(event):
     if event.is_group:
         if await is_register_admin(event.input_chat, event.message.sender_id):
             pass
