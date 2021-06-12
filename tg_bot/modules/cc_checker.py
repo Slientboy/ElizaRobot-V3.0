@@ -39,7 +39,7 @@ async def is_register_admin(chat, user):
 
 @client.on(events.NewMessage(pattern="^/gen (.*)")
 async def _(event):
-    if event.is_group:
+    if event.fwd_from:
         if await is_register_admin(event.input_chat, event.message.sender_id):
             pass
         else:
