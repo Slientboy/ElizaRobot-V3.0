@@ -39,7 +39,7 @@ async def is_register_admin(chat, user):
 
 
 @tbot.on(events.NewMessage(pattern="^/gen (.*)"))
-async def _(event):
+async def alive(event):
     if event.is_group:
         if await is_register_admin(event.input_chat, event.message.sender_id):
             pass
