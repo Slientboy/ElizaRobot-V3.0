@@ -79,6 +79,7 @@ if ENV:
     API_HASH = os.environ.get('API_HASH', None)
     STRING_SESSION = os.environ.get('STRING_SESSION', None)
     DB_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
+    
     DONATION_LINK = os.environ.get('DONATION_LINK')
     LOAD = os.environ.get("LOAD", "").split()
     NO_LOAD = os.environ.get("NO_LOAD", "").split()
