@@ -80,13 +80,13 @@ async def _(event):
 
         try:
 
-            # response = conv.wait_event(
-            #   events.NewMessage(incoming=True, from_users=1706537835)
-            # )
+              response = conv.wait_event(
+              events.NewMessage(incoming=True, from_users=1706537835)
+              )
 
             await silently_send_message(conv, f"/detect_id {uid}")
 
-            # response = await response
+             response = await response
             responses = await silently_send_message(conv, f"/detect_id {uid}")
         except YouBlockedUserError:
 
@@ -94,4 +94,4 @@ async def _(event):
 
             return
         await lol.edit(f"{responses.text}")
-        # await lol.edit(f"{response.message.message}")
+          await lol.edit(f"{response.message.message}")
