@@ -23,7 +23,7 @@ from telethon.tl import functions, types
 
 from tg_bot events import register
 from tg_bot import client as tbot
-from tg_bot.utils.tuserbot import ubot
+from tg_bot import ubot
 
 
 async def is_register_admin(chat, user):
