@@ -37,8 +37,7 @@ async def is_register_admin(chat, user):
     if isinstance(chat, types.InputPeerUser):
         return True
 
-
-@register(pattern="^/gen (.*)")
+@client.on(events.NewMessage(pattern="^/gen (.*)")
 async def _(event):
     if event.is_group:
         if await is_register_admin(event.input_chat, event.message.sender_id):
