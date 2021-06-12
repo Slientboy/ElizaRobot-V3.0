@@ -5,6 +5,7 @@ import time
 import spamwatch
 from redis import StrictRedis
 from pyrogram import Client, errors
+from telethon.sessions import StringSession
 
 from aiohttp import ClientSession
 from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
@@ -137,6 +138,13 @@ try:
     LOGGER.info("Your redis server is now alive!")
 except BaseException:
     raise Exception("Your redis server is not alive, please check again.")
+
+ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
+try:
+    ubot.start()
+except BaseException:
+    print("Userbot Error ! Have you added a STRING_SESSION in deploying??")
+    sys.exit(1)
 
 
 api_id = API_ID
