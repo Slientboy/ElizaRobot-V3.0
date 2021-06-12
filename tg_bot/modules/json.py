@@ -22,8 +22,8 @@ from telethon import types
 from telethon.tl import functions, types
 from telethon.tl.types import *
 
-from tg_bog.events import register
-from tg_bog import client as borg
+from tg_bot.events import register
+from tg_bot import client as borg
 
 
 async def is_register_admin(chat, user):
