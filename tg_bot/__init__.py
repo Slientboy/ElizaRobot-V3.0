@@ -79,6 +79,7 @@ if ENV:
     STRING_SESSION = os.environ.get('STRING_SESSION', None)
     DB_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
     MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
+    MONGO_PORT = os.environ.get('MONGO_PORT', 27017)
     DONATION_LINK = os.environ.get('DONATION_LINK')
     LOAD = os.environ.get("LOAD", "").split()
     NO_LOAD = os.environ.get("NO_LOAD", "").split()
