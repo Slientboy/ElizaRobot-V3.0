@@ -69,7 +69,7 @@ if ENV:
     ERROR_DUMP = os.environ.get('ERROR_DUMP', None)
     MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
     JOIN_LOGGER = os.environ.get('JOIN_LOGGER', None)
-
+    MONGO_PORT = os.environ.get('MONGO_PORT', 27017)
     WEBHOOK = bool(os.environ.get('WEBHOOK', False))
     URL = os.environ.get('URL', "")  # Does not contain token
     PORT = int(os.environ.get('PORT', 5000))
