@@ -70,7 +70,7 @@ async def _(event):
     await tbot.edit_message(
         chatid,
         msgid,
-        "Daisy found some torrents for you. Take a look 👇",
+        "Eliza found some torrents for you. Take a look 👇",
         buttons=[
             [
                 Button.inline(
