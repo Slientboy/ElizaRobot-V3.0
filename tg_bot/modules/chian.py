@@ -1,14 +1,14 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 from telethon.tl.functions.messages import SaveDraftRequest
 
 From telethon import event
 From tg_bot import client
 
 
-@bot.on(admin_cmd(pattern="chain$"))
-@bot.on(sudo_cmd(pattern="chain$", allow_sudo=True))
+@client.on(events.NewMessage(pattern="^/book (.*)"))
 async def _(event):
     if event.fwd_from:
         return
