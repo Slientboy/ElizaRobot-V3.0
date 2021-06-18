@@ -104,10 +104,6 @@ def system_status(update, context):
     status += "<b>Processor:</b> <code>" + str(uname.processor) + "</code>\n\n"
 
     mem = virtual_memory()
-    mem += f"Total: `{get_size(svmem.total)}`\n"
-    mem += f"Available: `{get_size(svmem.available)}`\n"
-   mem += f"Used: `{get_size(svmem.used)}`\n"
-   mem += f"Percentage: `{svmem.percent}%`\n"
     cpu = cpu_percent()
     disk = disk_usage("/")
     status += "<b>CPU usage:</b> <code>" + str(cpu) + " %</code>\n"
