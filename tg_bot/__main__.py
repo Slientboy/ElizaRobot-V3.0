@@ -23,21 +23,19 @@ from tg_bot.modules.helper_funcs.alternate import typing_action
 
 PM_START_TEXT = """
 Hi {}, My name is {} ! 
-"I'm a part of the Eagle Union and can easily manage your groups."
-𝓘 𝓪𝓶 𝒜𝓇𝓉𝑜𝓇𝒾𝒶 𝒫𝑒𝓃𝒹𝓇𝒶𝑔𝑜𝓃 𝓽𝓱𝓮 𝓼𝔀𝓸𝓻𝓭 𝓱𝓮𝓻𝓸  𝓸𝓷𝓮 𝓸𝓯 𝓽𝓱𝓮 𝓗𝓮𝓻𝓸 𝓸𝓯 𝓱𝓸𝓵𝔂 𝓰𝓻𝓪𝓲𝓵 𝔀𝓪𝓻 𝓘 𝓪𝓶 𝓼𝓾𝓶𝓶𝓸𝓷𝓮𝓭 𝓫𝔂 𝓶𝔂 𝓶𝓪𝓼𝓽𝓮𝓻 𝓽𝓸 𝓱𝓮𝓵𝓹 𝓱𝓲𝓶
-I HOPE I'LL BE ABLE TO MAINTAIN YOUR GROUP!
-Click on the /help button  to get help supported module.
+I am an Anime themed group management bot with some extra features.
+You can find my list of available commands with /help.
 
 """
 
 
-BOT_IMG = "https://telegra.ph/file/f05e6aff8aa6d5da89242.jpg"
+BOT_IMG = "https://telegra.ph/file/ee584ab068d785d78bcce.jpg"
 
 
 
 
 HELP_STRINGS = """
-*Helpful Commands :* [.](https://telegra.ph/file/eae9b1e1b1b9ab49a4ad4.jpg)
+*Helpful Commands :* [.](https://telegra.ph/file/6bded2b8791d716188832.jpg)
 ✧ /start: Starts me! You've probably already used this.
 ✧ /help: Sends this message; I'll tell you more about myself!
 ✧ /settings: 
