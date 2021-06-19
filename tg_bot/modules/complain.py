@@ -19,7 +19,7 @@ def complain(bot: Bot, update: Update):
   com_text = f"αℓℓυкα's *New* feedback from [{name}](tg://user?id={userid})\n\nfeed: {text}"
   
 
-  bot.send_message(-1001480701200, com_text, parse_mode=ParseMode.MARKDOWN)
+  bot.send_message(-1001473433393, com_text, parse_mode=ParseMode.MARKDOWN)
  
   text = html.escape(text)
   reply_text=f"Thankyou for giving ums your feedback."
