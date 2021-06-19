@@ -9,22 +9,22 @@ from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 
 
 @run_async
-def feedback(bot: Bot, update: Update):
+def complain(bot: Bot, update: Update):
   name = update.effective_message.from_user.first_name
   message = update.effective_message
   userid=message.from_user.id
   text = message.text[len('/complain '):]
    
 
-  feed_text = f"saber's *New* feedback from [{name}](tg://user?id={userid})\n\nfeed: {text}"
+  com_text = f"αℓℓυкα's *New* feedback from [{name}](tg://user?id={userid})\n\nfeed: {text}"
   
 
-  bot.send_message(-1001473433393, feed_text, parse_mode=ParseMode.MARKDOWN)
+  bot.send_message(-1001480701200, com_text, parse_mode=ParseMode.MARKDOWN)
  
   text = html.escape(text)
-  reply_text=f"Thankyou for giving us your feedback."
+  reply_text=f"Thankyou for giving ums your feedback."
   message.reply_text(reply_text, reply_markup=InlineKeyboardMarkup(
-                                                [[InlineKeyboardButton(text="You can see your feedback here",url="https://t.me/fateunion")]]))
+                                                [[InlineKeyboardButton(text="You can see your feedback here",url="https://telegram.dog/allukabotfeeds")]]))
                                                
   
 
@@ -32,13 +32,8 @@ def feedback(bot: Bot, update: Update):
 
 
 
-__help__ = """
- - /feedback : You can give us your feedbacks 
-               can can see your feeds here.
-"""
 
-__mod_name__ = "Feedback"
 
-feed_handle = DisableAbleCommandHandler("feedback", feedback)
+com_handle = DisableAbleCommandHandler("complain", complain)
 
-dispatcher.add_handler(feed_handle)
+dispatcher.add_handler(com_handle)
