@@ -204,7 +204,7 @@ def gban(update, context):
         evidence = f"<img src='{evidence_img}'>"
     else:
          evidence = evidence  
-    EVIDENSE_NEW_GBAN = f"<strong>New Global Ban</strong> \
+    EVIDENSE_NEW_GBAN = f"<strong>#GBANNED</strong> \
                         \n<strong>Originated from:</strong> <code>{chat_origin}</code> \
                         \n<strong>Sudo Admin:</strong> {mention_html(banner.id, banner.first_name)} \
                         \n<strong>User:</strong> {mention_html(user_chat.id, user_chat.first_name)} \
@@ -212,9 +212,9 @@ def gban(update, context):
                         \n<strong>Reason:</strong> {reason} \
                         \n\n<strong>Evidence:</strong> <br>\n{evidence}"
     
-    page = Shoko_gban.post(title=f"Shoko-gban-{user_chat.id}", author=f"{banner.first_name} ({banner.id})", text=EVIDENSE_NEW_GBAN)
+    page = Shoko_gban.post(title=f"Ram-gban-{user_chat.id}", author=f"{banner.first_name} ({banner.id})", text=EVIDENSE_NEW_GBAN)
     evidence_link = page.get('url')
-    evidence_link = "<a href='{}'>{}</a>".format(evidence_link, f"Shoko GBanned // user_id: {user_chat.id}")
+    evidence_link = "<a href='{}'>{}</a>".format(evidence_link, f"Ram GBanned // user_id: {user_chat.id}")
     
     message.reply_text(
         f"<b>Beginning of Global Ban for</b> {mention_html(user_chat.id, user_chat.first_name)}"
@@ -235,7 +235,7 @@ def gban(update, context):
             chat_origin = "<b>{}</b>".format(chat.id)
         context.bot.sendMessage(
             GBAN_DUMP,  
-            "<b>New Global Ban</b>"
+            "<b>#GBANNED</b>"
             f"\n<b>Originated from:</b> <code>{chat_origin}</code>"
             "\n<b>Sudo Admin:</b> {}"
             "\n<b>User:</b> {}"
@@ -310,7 +310,7 @@ def ungban(update, context):
         f"{reason} // Un-GBanned by {unbanner.first_name} id {unbanner.id}")
 
     message.reply_text(
-        "<b>Regression of Global Ban</b>"
+        "<b>#UNGBANNED</b>"
         "\n<b>Sudo Admin:</b> {}"
         "\n<b>User:</b> {}"
         "\n<b>ID:</b> <code>{}</code>"
@@ -324,7 +324,7 @@ def ungban(update, context):
     try:
         context.bot.sendMessage(
             GBAN_DUMP,
-            "<b>Regression of Global Ban</b>"
+            "<b>#UNGBANNED</b>"
             "\n<b>Status:</b> <code>Ceased</code>"
             "\n<b>Sudo Admin:</b> {}"
             "\n<b>User:</b> {}"
@@ -492,7 +492,7 @@ def __user_info__(user_id):
         user = sql.get_gbanned_user(user_id)
         if user.reason:
             text += "\nReason: <i>{}</i>".format(html.escape(user.reason))
-            text += "\n<i>- Appeal <a href={}>here</a>, if you think it's invalid.</i>".format('https://t.me/Shokosupport')
+            text += "\n<i>- Appeal <a href={}>here</a>, if you think it's invalid.</i>".format('https://t.me/eagleunionelizasupport')
     else:
         text = "<i>This user isn't  Globally banned.</i>"
     return text
