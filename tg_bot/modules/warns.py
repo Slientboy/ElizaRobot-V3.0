@@ -35,7 +35,7 @@ from tg_bot.modules.helper_funcs.string_handling import split_quotes
 from tg_bot.modules.helper_funcs.alternate import typing_action
 from tg_bot.modules.rules import send_rules
 from tg_bot.modules.log_channel import loggable
-from tg_bot.utils.mongo import mongodb as sql
+from tg_bot.modules.sql import warns_sql as sql
 
 WARN_HANDLER_GROUP = 9
 CURRENT_WARNING_FILTER_STRING = "<b>Current warning filters in this chat:</b>\n"
