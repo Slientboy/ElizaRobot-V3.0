@@ -62,3 +62,4 @@ asyncio
 dnspython
 cloudmersive_virus_api_client==3.0.1
 html_telegraph_poster
+multicolorcaptcha
