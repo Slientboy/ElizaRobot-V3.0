@@ -36,6 +36,7 @@ from tg_bot.modules.helper_funcs.string_handling import (
 )
 from tg_bot.modules.log_channel import loggable
 from tg_bot.modules.sql.global_bans_sql import is_user_gbanned
+from multicolorcaptcha import CaptchaGenerator
 
 VALID_WELCOME_FORMATTERS = [
     "first",
@@ -1095,6 +1096,11 @@ CLEAN_SERVICE_HANDLER = CommandHandler(
 WELCOME_HELP = CommandHandler("welcomehelp", welcome_help)
 BUTTON_VERIFY_HANDLER = CallbackQueryHandler(
     user_button, pattern=r"user_join_")
+CAPTCHA_BUTTON_VERIFY_HANDLER = CallbackQueryHandler(
+    user_captcha_button, pattern=r"user_captchajoin_\([\d\-]+,\d+\)_\(\d{4}\)", run_async=True
+)
+
+
 
 dispatcher.add_handler(NEW_MEM_HANDLER)
 dispatcher.add_handler(LEFT_MEM_HANDLER)
@@ -1109,3 +1115,4 @@ dispatcher.add_handler(WELCOMEMUTE_HANDLER)
 dispatcher.add_handler(CLEAN_SERVICE_HANDLER)
 dispatcher.add_handler(BUTTON_VERIFY_HANDLER)
 dispatcher.add_handler(WELCOME_HELP)
+dispatcher.add_handler(CAPTCHA_BUTTON_VERIFY_HANDLER)
