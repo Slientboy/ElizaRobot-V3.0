@@ -8,6 +8,7 @@ from telegram import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
     ParseMode,
+    Update,
 )
 from telegram.error import BadRequest
 from telegram.ext import (
