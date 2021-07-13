@@ -693,66 +693,7 @@ def reset_goodbye(update, context) -> str:
     )
 
 
-@run_async
-@user_admin
-@loggable
-@typing_action
-def welcomemute(update, context) -> str:
-    chat = update.effective_chat
-    user = update.effective_user
-    msg = update.effective_message
-    args = context.args
-
-    if len(args) >= 1:
-        if args[0].lower() in ("off", "no"):
-            sql.set_welcome_mutes(chat.id, False)
-            msg.reply_text("I will no longer mute people on joining!")
-            return (
-                "<b>{}:</b>"
-                "\n#WELCOME_MUTE"
-                "\n<b>• Admin:</b> {}"
-                "\nHas toggled welcome mute to <b>OFF</b>.".format(
-                    escape(chat.title), mention_html(user.id, user.first_name)
-                )
-            )
-        if args[0].lower() in ("soft"):
-            sql.set_welcome_mutes(chat.id, "soft")
-            msg.reply_text(
-                "I will restrict user's permission to send media for 24 hours"
-            )
-            return (
-                "<b>{}:</b>"
-                "\n#WELCOME_MUTE"
-                "\n<b>• Admin:</b> {}"
-                "\nHas toggled welcome mute to <b>SOFT</b>.".format(
-                    escape(chat.title), mention_html(user.id, user.first_name)
-                )
-            )
-        if args[0].lower() in ("strong"):
-            sql.set_welcome_mutes(chat.id, "strong")
-            msg.reply_text(
-                "I will now mute people when they join and"
-                " click on the button to be unmuted."
-            )
-            return (
-                "<b>{}:</b>"
-                "\n#WELCOME_MUTE"
-                "\n<b>• Admin:</b> {}"
-                "\nHas toggled welcome mute to <b>STRONG</b>.".format(
-                    escape(chat.title), mention_html(user.id, user.first_name)
-                )
-            )
-        msg.reply_text(
-            "Please enter `off`/`on`/`soft`/`strong`!",
-            parse_mode=ParseMode.MARKDOWN,
-        )
-        return ""
-    curr_setting = sql.welcome_mutes(chat.id)
-    reply = "\n Give me a setting! Choose one of: `off`/`no` or `soft` or `strong` only! \nCurrent setting: `{}`"
-    msg.reply_text(
-        reply.format(curr_setting),
-        parse_mode=ParseMode.MARKDOWN)
-    return ""
+@
 
 
 @run_async
@@ -804,6 +745,72 @@ def clean_welcome(update, context) -> str:
     update.effective_message.reply_text(
         "I understand 'on/yes' or 'off/no' only!")
     return ""
+
+user_admin
+@loggable
+def welcomemute(update: Update, context: CallbackContext) -> str:
+    args = context.args
+    chat = update.effective_chat
+    user = update.effective_user
+    msg = update.effective_message
+
+    if len(args) >= 1:
+        if args[0].lower() in ("off", "no"):
+            sql.set_welcome_mutes(chat.id, False)
+            msg.reply_text("I will no longer mute people on joining!")
+            return (
+                f"<b>{html.escape(chat.title)}:</b>\n"
+                f"#WELCOME_MUTE\n"
+                f"<b>• Admin:</b> {mention_html(user.id, user.first_name)}\n"
+                f"Has toggled welcome mute to <b>OFF</b>."
+            )
+        elif args[0].lower() in ["soft"]:
+            sql.set_welcome_mutes(chat.id, "soft")
+            msg.reply_text(
+                "I will restrict users' permission to send media for 24 hours."
+            )
+            return (
+                f"<b>{html.escape(chat.title)}:</b>\n"
+                f"#WELCOME_MUTE\n"
+                f"<b>• Admin:</b> {mention_html(user.id, user.first_name)}\n"
+                f"Has toggled welcome mute to <b>SOFT</b>."
+            )
+        elif args[0].lower() in ["strong"]:
+            sql.set_welcome_mutes(chat.id, "strong")
+            msg.reply_text(
+                "I will now mute people when they join until they prove they're not a bot.\nThey will have 120seconds before they get kicked."
+            )
+            return (
+                f"<b>{html.escape(chat.title)}:</b>\n"
+                f"#WELCOME_MUTE\n"
+                f"<b>• Admin:</b> {mention_html(user.id, user.first_name)}\n"
+                f"Has toggled welcome mute to <b>STRONG</b>."
+            )
+        elif args[0].lower() in ["captcha"]:
+            sql.set_welcome_mutes(chat.id, "captcha")
+            msg.reply_text(
+                "I will now mute people when they join until they prove they're not a bot.\nThey have to solve a captcha to get unmuted."
+            )
+            return (
+                f"<b>{html.escape(chat.title)}:</b>\n"
+                f"#WELCOME_MUTE\n"
+                f"<b>• Admin:</b> {mention_html(user.id, user.first_name)}\n"
+                f"Has toggled welcome mute to <b>CAPTCHA</b>."
+            )
+        else:
+            msg.reply_text(
+                "Please enter `off`/`no`/`soft`/`strong`/`captcha`!",
+                parse_mode=ParseMode.MARKDOWN,
+            )
+            return ""
+    else:
+        curr_setting = sql.welcome_mutes(chat.id)
+        reply = (
+            f"\n Give me a setting!\nChoose one out of: `off`/`no` or `soft`, `strong` or `captcha` only! \n"
+            f"Current setting: `{curr_setting}`"
+        )
+        msg.reply_text(reply, parse_mode=ParseMode.MARKDOWN)
+        return ""
 
 
 @run_async
