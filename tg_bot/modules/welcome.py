@@ -693,7 +693,6 @@ def reset_goodbye(update, context) -> str:
     )
 
 
-@
 
 
 @run_async
@@ -746,7 +745,7 @@ def clean_welcome(update, context) -> str:
         "I understand 'on/yes' or 'off/no' only!")
     return ""
 
-user_admin
+@user_admin
 @loggable
 def welcomemute(update: Update, context: CallbackContext) -> str:
     args = context.args
