@@ -758,7 +758,7 @@ def welcomemute(update: Update, context: CallbackContext) -> str:
             sql.set_welcome_mutes(chat.id, False)
             msg.reply_text("I will no longer mute people on joining!")
             return (
-                f"<b>{}:</b>\n"
+                "<b>{}:</b>\n"
                 f"#WELCOME_MUTE\n"
                 f"<b>• Admin:</b> {mention_html(user.id, user.first_name)}\n"
                 f"Has toggled welcome mute to <b>OFF</b>."
@@ -769,7 +769,7 @@ def welcomemute(update: Update, context: CallbackContext) -> str:
                 "I will restrict users' permission to send media for 24 hours."
             )
             return (
-                f"<b>{}:</b>\n"
+                "<b>{}:</b>\n"
                 f"#WELCOME_MUTE\n"
                 f"<b>• Admin:</b> {mention_html(user.id, user.first_name)}\n"
                 f"Has toggled welcome mute to <b>SOFT</b>."
@@ -780,7 +780,7 @@ def welcomemute(update: Update, context: CallbackContext) -> str:
                 "I will now mute people when they join until they prove they're not a bot.\nThey will have 120seconds before they get kicked."
             )
             return (
-                f"<b>{}:</b>\n"
+                "<b>{}:</b>\n"
                 f"#WELCOME_MUTE\n"
                 f"<b>• Admin:</b> {mention_html(user.id, user.first_name)}\n"
                 f"Has toggled welcome mute to <b>STRONG</b>."
@@ -791,7 +791,7 @@ def welcomemute(update: Update, context: CallbackContext) -> str:
                 "I will now mute people when they join until they prove they're not a bot.\nThey have to solve a captcha to get unmuted."
             )
             return (
-                f"<b>{}:</b>\n"
+                "<b>{}:</b>\n"
                 f"#WELCOME_MUTE\n"
                 f"<b>• Admin:</b> {mention_html(user.id, user.first_name)}\n"
                 f"Has toggled welcome mute to <b>CAPTCHA</b>."
