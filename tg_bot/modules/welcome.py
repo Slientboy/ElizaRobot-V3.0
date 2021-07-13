@@ -329,53 +329,171 @@ def new_member(update, context):
                         continue
                     # Join welcome: soft mute
                     if welc_mutes == "soft":
-                        context.bot.restrict_chat_member(
-                            chat.id,
-                            new_mem.id,
-                            permissions=ChatPermissions(
-                                can_send_messages=True,
-                                can_send_media_messages=False,
-                                can_send_other_messages=False,
-                                can_invite_users=False,
-                                can_pin_messages=False,
-                                can_send_polls=False,
-                                can_change_info=False,
-                                can_add_web_page_previews=False,
-                                until_date=(int(time.time() + 24 * 60 * 60)),
-                            ),
+                    bot.restrict_chat_member(
+                        chat.id,
+                        new_mem.id,
+                        permissions=ChatPermissions(
+                            can_send_messages=True,
+                            can_send_media_messages=False,
+                            can_send_other_messages=False,
+                            can_invite_users=False,
+                            can_pin_messages=False,
+                            can_send_polls=False,
+                            can_change_info=False,
+                            can_add_web_page_previews=False,
+                        ),
+                        until_date=(int(time.time() + 24 * 60 * 60)),
+                    )
+                if welc_mutes == "strong":
+                    welcome_bool = False
+                    if not media_wel:
+                        VERIFIED_USER_WAITLIST.update(
+                            {
+                                (chat.id, new_mem.id): {
+                                    "should_welc": should_welc,
+                                    "media_wel": False,
+                                    "status": False,
+                                    "update": update,
+                                    "res": res,
+                                    "keyboard": keyboard,
+                                    "backup_message": backup_message,
+                                }
+                            }
                         )
-                    # Join welcome: strong mute
-                    if welc_mutes == "strong":
-                        new_join_mem = "Hey {}!".format(
-                            mention_html(user.id, new_mem.first_name)
+                    else:
+                        VERIFIED_USER_WAITLIST.update(
+                            {
+                                (chat.id, new_mem.id): {
+                                    "should_welc": should_welc,
+                                    "chat_id": chat.id,
+                                    "status": False,
+                                    "media_wel": True,
+                                    "cust_content": cust_content,
+                                    "welc_type": welc_type,
+                                    "res": res,
+                                    "keyboard": keyboard,
+                                }
+                            }
                         )
-                        msg.reply_text(
-                            "{}\nClick the button below to start talking.".format(new_join_mem),
-                            reply_markup=InlineKeyboardMarkup(
-                                [
-                                    [
-                                        InlineKeyboardButton(
-                                            text="Yus, I'm a human",
-                                            callback_data="user_join_({})".format(
-                                                new_mem.id),
-                                        )]]),
-                            parse_mode=ParseMode.HTML,
-                            reply_to_message_id=reply,
+                    new_join_mem = f"[{escape_markdown(new_mem.first_name)}](tg://user?id={user.id})"
+                    message = msg.reply_text(
+                        f"{new_join_mem}, click the button below to prove you're human.\nYou have 120 seconds.",
+                        reply_markup=InlineKeyboardMarkup(
+                            [
+                                {
+                                    InlineKeyboardButton(
+                                        text="Yes, I'm human.",
+                                        callback_data=f"user_join_({new_mem.id})",
+                                    )
+                                }
+                            ]
+                        ),
+                        parse_mode=ParseMode.MARKDOWN,
+                        reply_to_message_id=reply,
+                    )
+                    bot.restrict_chat_member(
+                        chat.id,
+                        new_mem.id,
+                        permissions=ChatPermissions(
+                            can_send_messages=False,
+                            can_invite_users=False,
+                            can_pin_messages=False,
+                            can_send_polls=False,
+                            can_change_info=False,
+                            can_send_media_messages=False,
+                            can_send_other_messages=False,
+                            can_add_web_page_previews=False,
+                        ),
+                    )
+                    job_queue.run_once(
+                        partial(check_not_bot, new_mem, chat.id, message.message_id),
+                        120,
+                        name="welcomemute",
+                    )
+                if welc_mutes == "captcha":
+                    btn = []
+                    # Captcha image size number (2 -> 640x360)
+                    CAPCTHA_SIZE_NUM = 2
+                    # Create Captcha Generator object of specified size
+                    generator = CaptchaGenerator(CAPCTHA_SIZE_NUM)
+
+                    # Generate a captcha image
+                    captcha = generator.gen_captcha_image(difficult_level=3)
+                    # Get information
+                    image = captcha["image"]
+                    characters = captcha["characters"]
+                    #print(characters)
+                    fileobj = BytesIO()
+                    fileobj.name=f'captcha_{new_mem.id}.png'
+                    image.save(fp=fileobj)
+                    fileobj.seek(0)
+                    CAPTCHA_ANS_DICT[(chat.id, new_mem.id)] = int(characters)
+                    welcome_bool = False
+                    if not media_wel:
+                        VERIFIED_USER_WAITLIST.update(
+                            {
+                                (chat.id, new_mem.id): {
+                                    "should_welc": should_welc,
+                                    "media_wel": False,
+                                    "status": False,
+                                    "update": update,
+                                    "res": res,
+                                    "keyboard": keyboard,
+                                    "backup_message": backup_message,
+                                    "captcha_correct": characters,
+                                }
+                            }
                         )
-                        context.bot.restrict_chat_member(
-                            chat.id,
-                            new_mem.id,
-                            permissions=ChatPermissions(
-                                can_send_messages=False,
-                                can_invite_users=False,
-                                can_pin_messages=False,
-                                can_send_polls=False,
-                                can_change_info=False,
-                                can_send_media_messages=False,
-                                can_send_other_messages=False,
-                                can_add_web_page_previews=False,
-                            ),
+                    else:
+                        VERIFIED_USER_WAITLIST.update(
+                            {
+                                (chat.id, new_mem.id): {
+                                    "should_welc": should_welc,
+                                    "chat_id": chat.id,
+                                    "status": False,
+                                    "media_wel": True,
+                                    "cust_content": cust_content,
+                                    "welc_type": welc_type,
+                                    "res": res,
+                                    "keyboard": keyboard,
+                                    "captcha_correct": characters,
+                                }
+                            }
                         )
+
+                    nums = [random.randint(1000, 9999) for _ in range(7)]
+                    nums.append(characters)
+                    random.shuffle(nums)
+                    to_append = []
+                    #print(nums)
+                    for a in nums:
+                        to_append.append(InlineKeyboardButton(text=str(a), callback_data=f"user_captchajoin_({chat.id},{new_mem.id})_({a})"))
+                        if len(to_append) > 2:
+                            btn.append(to_append)
+                            to_append = []
+                    if to_append:
+                        btn.append(to_append)
+
+                    message = msg.reply_photo(fileobj, caption=f'Welcome [{escape_markdown(new_mem.first_name)}](tg://user?id={user.id}). Click the correct button to get unmuted!',
+                                    reply_markup=InlineKeyboardMarkup(btn),
+                                    parse_mode=ParseMode.MARKDOWN,
+                                    reply_to_message_id=reply,
+                                )
+                    bot.restrict_chat_member(
+                        chat.id,
+                        new_mem.id,
+                        permissions=ChatPermissions(
+                            can_send_messages=False,
+                            can_invite_users=False,
+                            can_pin_messages=False,
+                            can_send_polls=False,
+                            can_change_info=False,
+                            can_send_media_messages=False,
+                            can_send_other_messages=False,
+                            can_add_web_page_previews=False,
+                        ),
+                    )
+
         prev_welc = sql.get_clean_pref(chat.id)
         if prev_welc:
             try:
