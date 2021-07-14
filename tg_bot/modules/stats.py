@@ -18,7 +18,7 @@ from tg_bot import (
     SUPPORT_USERS,
     DEV_USERS,
     WHITELIST_USERS,
-    StartTime
+    since_time_start
 )
 from tg_bot.__main__ import STATS, USER_INFO, TOKEN
 from tg_bot.modules.sql import SESSION
