@@ -329,18 +329,18 @@ def new_member(update, context):
                         continue
                     # Join welcome: soft mute
                     if welc_mutes == "soft":
-                    bot.restrict_chat_member(
-                        chat.id,
-                        new_mem.id,
-                        permissions=ChatPermissions(
-                            can_send_messages=True,
-                            can_send_media_messages=False,
-                            can_send_other_messages=False,
-                            can_invite_users=False,
-                            can_pin_messages=False,
-                            can_send_polls=False,
-                            can_change_info=False,
-                            can_add_web_page_previews=False,
+                        bot.restrict_chat_member(
+                            chat.id,
+                            new_mem.id,
+                            permissions=ChatPermissions(
+                                can_send_messages=True,
+                                can_send_media_messages=False,
+                                can_send_other_messages=False,
+                                can_invite_users=False,
+                                can_pin_messages=False,
+                                can_send_polls=False,
+                                can_change_info=False,
+                                can_add_web_page_previews=False,
                         ),
                         until_date=(int(time.time() + 24 * 60 * 60)),
                     )
