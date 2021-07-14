@@ -17,10 +17,7 @@ from tg_bot import (
     SUDO_USERS,
     SUPPORT_USERS,
     DEV_USERS,
-    SARDEGNA_USERS,
     WHITELIST_USERS,
-    INFOPIC,
-    sw,
     StartTime
 )
 from tg_bot.__main__ import STATS, USER_INFO, TOKEN
