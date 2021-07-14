@@ -17,21 +17,20 @@ from tg_bot import (
     SUDO_USERS,
     SUPPORT_USERS,
     DEV_USERS,
-    WHITELIST_USERS,
-    since_time_start
+    WHITELIST_USERS
 )
 from tg_bot.__main__ import STATS, USER_INFO, TOKEN
 from tg_bot.modules.sql import SESSION
 from tg_bot.modules.helper_funcs.chat_status import user_admin, sudo_plus
 from tg_bot.modules.helper_funcs.extraction import extract_user
 import tg_bot.modules.sql.users_sql as sql
-from tg_bot.modules.language import gs
+from tg_bot import since_time_start as StartTime
 from telegram import __version__ as ptbver, InlineKeyboardMarkup, InlineKeyboardButton
 from psutil import cpu_percent, virtual_memory, disk_usage, boot_time
 import datetime
 import platform
 from platform import python_version
-from tg_bot.modules.helper_funcs.decorators import kigcmd, kigcallback
+from tg_bot.event import kigcmd, kigcallback
 
 
 def get_readable_time(seconds: int) -> str:
@@ -138,9 +137,3 @@ def pingCallback(update: Update, context: CallbackContext):
     query.answer('Pong! {}ms'.format(ping_time))
 
 
-def get_help(chat):
-    return gs(chat, "misc_help")
-
-
-
-__mod_name__ = "Misc"
