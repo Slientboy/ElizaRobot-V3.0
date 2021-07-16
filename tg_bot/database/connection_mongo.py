@@ -17,7 +17,7 @@
 
 
 import datetime 
-from Stella import StellaDB
+from tg_bot.utils.mongo2 import db as StellaDB
 
 connection = StellaDB.connection 
 chats = StellaDB.chats 
