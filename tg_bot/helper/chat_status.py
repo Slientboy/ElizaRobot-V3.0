@@ -19,9 +19,10 @@
 from typing import List, Union
 
 from pyrogram.types import Message
-from tg_bot import (BOT_ID, GROUP_ANONYMOUS_BOT, SUDO_USERS, StellaCli,
+from tg_bot import (BOT_ID, GROUP_ANONYMOUS_BOT, SUDO_USERS, 
                     TELEGRAM_SERVICES_IDs)
 from tg_bot.database.connection_mongo import GetConnectedChat
+from tg_bot import pbot as StellaCli
 
 ADMIN_STRINGS = [
         "creator",
