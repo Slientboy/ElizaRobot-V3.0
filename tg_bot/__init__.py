@@ -89,7 +89,7 @@ if ENV:
     STRICT_GBAN = bool(os.environ.get('STRICT_GBAN', False))
     WORKERS = int(os.environ.get('WORKERS', 8)) 
     BOT_ID = os.environ.get('BOT_ID', None)
-    BOT_USERNAME = os.environ.get('BOT_USERNAME' None)
+    BOT_USERNAME = os.environ.get('BOT_USERNAME', None)
     CASH_API_KEY = os.environ.get('CASH_API_KEY', None)
     YOUTUBE_API_KEY = os.environ.get('YOUTUBE_API_KEY', None)
     TIME_API_KEY = os.environ.get('TIME_API_KEY', None)
