@@ -16,7 +16,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-from Stella import StellaCli
+from tg_bot import pbot as StellaCli
 
 async def get_user_id(message):
     if(
