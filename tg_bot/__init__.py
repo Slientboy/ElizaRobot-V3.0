@@ -190,6 +190,15 @@ async def get_entity(client, entity):
                 entity_client = kp
     return entity, entity_client
 
+TELEGRAM_SERVICES_IDs = (
+    [
+        777000, # Telegram Service Notifications
+        1087968824 # GroupAnonymousBot
+    ]
+)
+
+GROUP_ANONYMOUS_BOT = 1087968824
+
 
 SUDO_USERS = list(SUDO_USERS) + list(DEV_USERS)
 DEV_USERS = list(DEV_USERS)
