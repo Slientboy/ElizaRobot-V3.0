@@ -16,7 +16,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-from Stella import StellaDB
+from tg_bot.utils.mongo2 import db as StellaDB
 
 disable = StellaDB.disable
 
