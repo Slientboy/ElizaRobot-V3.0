@@ -16,9 +16,9 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-from Stella.database.disable_mongo import get_disabled, get_disabledel
-from Stella.helper.chat_status import isBotCan, isUserAdmin
-from Stella.helper.custom_filter import DISABLE_COMMANDS
+from tg_bot.database.disable_mongo import get_disabled, get_disabledel
+from tg_bot.helper.chat_status import isBotCan, isUserAdmin
+from tg_bot.helper.custom_filter import DISABLE_COMMANDS
 
 
 def disable(func):
