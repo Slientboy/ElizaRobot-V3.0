@@ -16,7 +16,7 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-from Stella.helper.convert import convert_time
+from tg_bot.helper.convert import convert_time
 
 async def get_time(message):
     if(
