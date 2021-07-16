@@ -21,7 +21,7 @@ from typing import List, Union
 
 from pyrogram.filters import create
 from pyrogram.types import Message
-from Stella import BOT_USERNAME, PREFIX
+from tg_bot import BOT_USERNAME, PREFIX
 
 # Global variables for dmins commands, connection admin commands & connection user commands 
 DISABLE_COMMANDS = []
